@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawWaveform(context, analyser, bufferLength, dataArray, scaleY) {
+        context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
         context.fillStyle = 'white';
         context.beginPath();
 
