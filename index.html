@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBLIGADO ABREGU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        #playButton, #stopButton {
+            padding: 10px;
+            font-size: 0; /* Hide text */
+            background-color: #ffffff; /* Button background color */
+            border: none;
+            cursor: pointer;
+            color: #000000; /* Button text color */
+        }
+
+        #playButton i, #stopButton i {
+            font-size: 24px; /* Icon size */
+        }
+
+        .waveform-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 250px; /* Increased height for better visibility */
+            margin-bottom: 20px;
+        }
+
+        .waveform-canvas {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff; /* Add background color for better visibility */
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button id="playButton"><i class="fas fa-play"></i></button>
+        <button id="stopButton"><i class="fas fa-stop"></i></button>
+    </div>
+    
+    <div class="waveform-container">
+        <canvas id="waveformCanvas1" class="waveform-canvas"></canvas>
+    </div>
+    
+    <div class="waveform-container">
+        <canvas id="waveformCanvas2" class="waveform-canvas"></canvas>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
