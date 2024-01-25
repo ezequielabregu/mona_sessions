@@ -4,6 +4,17 @@ let waveformCanvas1, waveformCanvas2;
 let canvasContext1, canvasContext2;
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    let audioPlayer;
+    let isPlaying = false;
+    let waveformCanvas1, waveformCanvas2;
+    let canvasContext1, canvasContext2;
+    const playStopButton = document.getElementById('playStopButton');
+
+    function updateButtonIcon() {
+        playStopButton.innerHTML = isPlaying ? '<i class="fas fa-stop"></i>' : '<i class="fas fa-play"></i>';
+    }
+
     audioPlayer = new AudioPlayer();
     waveformCanvas1 = document.getElementById('waveformCanvas1');
     canvasContext1 = waveformCanvas1.getContext('2d');
@@ -11,7 +22,40 @@ document.addEventListener('DOMContentLoaded', () => {
     waveformCanvas2 = document.getElementById('waveformCanvas2');
     canvasContext2 = waveformCanvas2.getContext('2d');
 
-    document.getElementById('playButton').addEventListener('click', () => {
+    playStopButton.addEventListener('click', () => {
+        if (!isPlaying) {
+            audioPlayer.play();
+            isPlaying = true;
+            visualizeAudio();
+        } else {
+            audioPlayer.stop();
+            isPlaying = false;
+            clearCanvas();
+        }
+
+        updateButtonIcon();
+    });
+
+ /*    audioPlayer = new AudioPlayer();
+    waveformCanvas1 = document.getElementById('waveformCanvas1');
+    canvasContext1 = waveformCanvas1.getContext('2d');
+
+    waveformCanvas2 = document.getElementById('waveformCanvas2');
+    canvasContext2 = waveformCanvas2.getContext('2d');
+
+    document.getElementById('playStopButton').addEventListener('click', () => {
+        if (!isPlaying) {
+            audioPlayer.play();
+            isPlaying = true;
+            visualizeAudio();
+        } else {
+            audioPlayer.stop();
+            isPlaying = false;
+            clearCanvas();
+        }
+    });
+ */
+/*     document.getElementById('playButton').addEventListener('click', () => {
         if (!isPlaying) {
             audioPlayer.play();
             isPlaying = true;
@@ -25,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = false;
             clearCanvas();
         }
-    });
+    }); */
 
     function visualizeAudio() {
         const analyser1 = createAnalyser(audioPlayer.currentAudio1);
@@ -88,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasContext1.clearRect(0, 0, waveformCanvas1.width, waveformCanvas1.height);
         canvasContext2.clearRect(0, 0, waveformCanvas2.width, waveformCanvas2.height);
     }
+
+    // Initial icon setup
+    updateButtonIcon();
 });
 
 class AudioPlayer {

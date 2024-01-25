@@ -1,68 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OBLIGADO ABREGU</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        #controls {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+      body {
+        width: 100vw;
+        height: 100vh;
+        background: #efeeee;
+        display: grid;
+        place-items: center;
+      }
+      .container {
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        padding: 2rem; /* Adjust the padding to make the button smaller */
+        background: #efeeee;
+        border-radius: 50%;
+        transition: all 0.3s ease-in;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1),
+          -10px -10px 10px rgba(255, 255, 255, 0.6);
+      }
 
-        #playButton, #stopButton {
-            padding: 10px;
-            font-size: 0; /* Hide text */
-            background-color: #ffffff; /* Button background color */
-            border: none;
-            cursor: pointer;
-            color: #000000; /* Button text color */
-        }
+      .container .fas {
+        display: grid;
+        place-items: center;
+        font-size: 3rem; /* Adjust the font-size to make the icon smaller */
+        color: gray;
+      }
 
-        #playButton i, #stopButton i {
-            font-size: 24px; /* Icon size */
-        }
+      .container:active {
+        box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.1),
+          inset -10px -10px 10px rgba(255, 255, 255, 0.6);
+      }
 
-        .waveform-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            height: 250px; /* Increased height for better visibility */
-            margin-bottom: 20px;
-        }
+      .container:active .fas {
+        color: #721efa;
+      }
 
-        .waveform-canvas {
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff; /* Add background color for better visibility */
-        }
+      .waveform-container {
+        position: relative;
+        width: 100%; /* Updated to fill the horizontal width */
+        max-width: 100%;
+        height: 250px; /* Increased height for better visibility */
+        margin-bottom: 20px;
+      }
+
+      .waveform-canvas {
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff; /* Add background color for better visibility */
+      }
     </style>
-</head>
-<body>
-    <div id="controls">
-        <button id="playButton"><i class="fas fa-play"></i></button>
-        <button id="stopButton"><i class="fas fa-stop"></i></button>
+  </head>
+  <body>
+    <div class="container" id="playStopButton">
+      <i class="fas fa-play"></i>
     </div>
-    
+
     <div class="waveform-container">
-        <canvas id="waveformCanvas1" class="waveform-canvas"></canvas>
+      <canvas id="waveformCanvas1" class="waveform-canvas"></canvas>
     </div>
-    
+
     <div class="waveform-container">
-        <canvas id="waveformCanvas2" class="waveform-canvas"></canvas>
+      <canvas id="waveformCanvas2" class="waveform-canvas"></canvas>
     </div>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
