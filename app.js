@@ -2,14 +2,11 @@ let audioPlayer;
 let isPlaying = false;
 let waveformCanvas1, waveformCanvas2;
 let canvasContext1, canvasContext2;
+let playStopButton;
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let audioPlayer;
-    let isPlaying = false;
-    let waveformCanvas1, waveformCanvas2;
-    let canvasContext1, canvasContext2;
-    const playStopButton = document.getElementById('playStopButton');
+    playStopButton = document.getElementById('playStopButton');
 
     function updateButtonIcon() {
         playStopButton.innerHTML = isPlaying ? '<i class="fas fa-stop"></i>' : '<i class="fas fa-play"></i>';
@@ -35,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateButtonIcon();
     });
+
 
  /*    audioPlayer = new AudioPlayer();
     waveformCanvas1 = document.getElementById('waveformCanvas1');
